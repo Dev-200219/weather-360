@@ -3,17 +3,21 @@ import './WeatherCard.css'
 import axios from 'axios';
 import moment from 'moment';
 
-function WeatherCard({ location, unit }) {
+function WeatherCard({ location, unit, setAQIData }) {
     const [data, setData] = useState({});
 
     useEffect(() => {
-        axios.get(`https://api.weatherapi.com/v1/forecast.json?key=4184453e9a1449d7a7860028232606&q=${location.lat},${location.lng}&days=1&aqi=no&alerts=no`).then(({ data }) => {
+        axios.get(`https://api.weatherapi.com/v1/forecast.json?key=4184453e9a1449d7a7860028232606&q=${location.lat},${location.lng}&days=3&aqi=yes&alerts=no`).then(({ data }) => {
             setData(data)
+            setAQIData(data?.current?.air_quality)
         })
     }, [location])
 
-    let hourData = data?.forecast?.forecastday[0]?.hour;
     let currentTime = Number(moment().format().split('T')[1].split(':')[0]);
+    let startTime = Math.max(0, currentTime - 9);
+    let endTime = startTime + 11;
+    console.log(currentTime, startTime, endTime);
+    let hourData = data?.forecast?.forecastday[0]?.hour;
 
     return (
         <div className='current-day-weather-container'>
@@ -42,14 +46,15 @@ function WeatherCard({ location, unit }) {
                 {
                     hourData?.map((singleData, time) => {
                         return (
-                            time >= currentTime && time - currentTime <= 10 ?
+                            time >= startTime && time <= endTime ?
                                 <div key={time} className="hour-data">
                                     <div className="time">{time % 12 === 0 ? 12 : (time) % 12} {time >= 12 ? 'pm' : 'am'}</div>
                                     <div className="hour-weather-img">
                                         <img src={singleData?.condition?.icon} alt="" />
                                     </div>
                                     <div className="hour-temperature">{unit === 'celsius' ? singleData?.temp_c : singleData?.temp_f}&deg;</div>
-                                </div> : <></>
+                                </div> 
+                                : <></>
                         )
                     })
                 }

@@ -1,0 +1,25 @@
+.chart-container {
+    margin: 1rem;
+    width: 60%;
+    background-color: #2C2C3A;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chart-title {
+    margin-left: 1rem;
+}
+
+.index-title {
+    margin-right: 1rem;
+}

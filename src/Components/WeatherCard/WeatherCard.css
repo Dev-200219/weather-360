@@ -43,6 +43,7 @@
     align-items: center;
     justify-content: space-around;
     overflow: auto;
+    /* flex-wrap: wrap; */
     gap: 1rem;
 }
 
@@ -64,6 +65,7 @@
 
 .hour-temperature, .time {
     font-weight: 500;
+    font-size: 13px;
 }
 
 .hour-weather-img > img {
