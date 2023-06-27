@@ -5,8 +5,7 @@ import moment from 'moment/moment'
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 
-function Header({setLocation}) {
-    const [unit, setUnit] = useState('celsius');
+function Header({setLocation, unit, setUnit}) {
     const [loading, setLoading] = useState(false);
     const [options, setOptions] = useState(null);
 
@@ -70,7 +69,7 @@ function Header({setLocation}) {
                                 <List className='location-list'>
                                     {
                                         loading ? <ListItem>Loading..</ListItem> :
-                                            options?.length == 0 ? <ListItem>No Locations</ListItem> :
+                                            options?.length === 0 ? <ListItem>No Locations</ListItem> :
                                                 options?.map((location) => {
                                                     return (
                                                         <ListItem onClick={() => chooseLocation(location)} key={location.name} className='hover-effect'>{`${location.name}, ${location.region}`}</ListItem>
