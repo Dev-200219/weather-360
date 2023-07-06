@@ -49,7 +49,6 @@ function AQIChart({ AQIData }) {
             },
         ],
     };
-    
     return (
         <div className='chart-container'>
             <div className="details">

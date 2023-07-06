@@ -3,20 +3,21 @@ import './WeatherCard.css'
 import axios from 'axios';
 import moment from 'moment';
 
-function WeatherCard({ location, unit, setAQIData }) {
+function WeatherCard({ location, unit, setAQIData, setAstroData }) {
     const [data, setData] = useState({});
 
     useEffect(() => {
         axios.get(`https://api.weatherapi.com/v1/forecast.json?key=4184453e9a1449d7a7860028232606&q=${location.lat},${location.lng}&days=3&aqi=yes&alerts=no`).then(({ data }) => {
             setData(data)
             setAQIData(data?.current?.air_quality)
+            setAstroData(data?.forecast?.forecastday[0].astro)
+            console.log(data?.forecast?.forecastday[0].astro);
         })
     }, [location])
 
     let currentTime = Number(moment().format().split('T')[1].split(':')[0]);
-    let startTime = Math.max(0, currentTime - 9);
-    let endTime = startTime + 11;
-    console.log(currentTime, startTime, endTime);
+    let endTime = Math.min(currentTime + 5, 24);
+    let startTime = endTime - 10;
     let hourData = data?.forecast?.forecastday[0]?.hour;
 
     return (
@@ -53,7 +54,7 @@ function WeatherCard({ location, unit, setAQIData }) {
                                         <img src={singleData?.condition?.icon} alt="" />
                                     </div>
                                     <div className="hour-temperature">{unit === 'celsius' ? singleData?.temp_c : singleData?.temp_f}&deg;</div>
-                                </div> 
+                                </div>
                                 : <></>
                         )
                     })

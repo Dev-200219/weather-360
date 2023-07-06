@@ -1,0 +1,62 @@
+.astro-data-container {
+    background-color: #2C2C3A;
+    color: white;
+    margin: 1rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.data-box {
+    background-color: #CBE8EA;
+    color: #1F1E25;
+    border-radius: 20px;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 90%;
+}
+
+.sunrise {
+    background-image: url('https://img.icons8.com/color/48/sunrise.png');
+}
+
+.sunset {
+    background-image: url('https://img.icons8.com/color/48/sunset.png');
+}
+
+.moonrise {
+    background-image: url('https://img.icons8.com/fluency/48/moonrise.png');
+}
+
+.moonset {
+    background-image: url('https://img.icons8.com/fluency/48/moonset.png');
+}
+
+.astro-heading {
+    font-size: large;
+}
+
+.astro-data {
+    font-size: medium;
+    font-weight: 500;
+}
+
+img {
+    align-self: flex-end;
+}
+
+img {
+    height: 40px;
+}
