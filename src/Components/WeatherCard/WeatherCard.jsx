@@ -3,7 +3,7 @@ import './WeatherCard.css'
 import axios from 'axios';
 import moment from 'moment';
 
-function WeatherCard({ location, unit, setAQIData, setAstroData }) {
+function WeatherCard({ location, unit, setAQIData, setAstroData, setForecastData }) {
     const [data, setData] = useState({});
 
     useEffect(() => {
@@ -11,12 +11,12 @@ function WeatherCard({ location, unit, setAQIData, setAstroData }) {
             setData(data)
             setAQIData(data?.current?.air_quality)
             setAstroData(data?.forecast?.forecastday[0].astro)
-            console.log(data?.forecast?.forecastday[0].astro);
+            setForecastData([data?.forecast?.forecastday[1], data?.forecast?.forecastday[2]])
         })
     }, [location])
 
     let currentTime = Number(moment().format().split('T')[1].split(':')[0]);
-    let endTime = Math.min(currentTime + 5, 24);
+    let endTime = Math.min(currentTime + 8, 24);
     let startTime = endTime - 10;
     let hourData = data?.forecast?.forecastday[0]?.hour;
 

@@ -1,0 +1,51 @@
+.forecast-data-container {
+    background-color: #2C2C3A;
+    color: white;
+    margin: 1rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+    height: auto;
+    gap: 1rem;
+}
+
+.forecast-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.future-data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.future-data {
+    background-color: #CBE8EA;
+    color: #1F1E25;
+    border-radius: 20px;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.max-temp,
+.date {
+    font-size: xx-large;
+    margin-right: 2px;
+}
+
+.min-temp,
+.month,
+.day {
+    font-size: medium;
+    font-weight: 500;
+}
+
+.forecast-date-container {
+    margin-left: auto;
+}
