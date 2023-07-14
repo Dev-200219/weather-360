@@ -7,4 +7,5 @@ body {
   padding: 0;
   background-color: #1E1F23;
   font-family: 'Poppins', sans-serif !important;
+  width: fit-content;
 }

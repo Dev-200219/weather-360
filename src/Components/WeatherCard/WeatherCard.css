@@ -7,6 +7,7 @@
     flex-direction: column;
     gap: 2rem;
     padding: 0.5rem;
+    margin-right: 0;
 }
 
 .top {
@@ -71,4 +72,14 @@
     height: 40px;
     width: 40px;
     margin-top: 10%;
+}
+
+@media screen and (max-width:1024px) {
+    .top {
+        gap: 0.5rem;
+    }
+
+    .current-day-weather-container {
+        margin-right: 1rem;
+    }
 }

@@ -6,6 +6,7 @@ import AQIChart from './Components/AQIChart/AQIChart';
 import AstroData from './Components/AstroData/AstroData';
 import { Grid } from '@mui/material';
 import Forecast from './Components/Forecast/Forecast';
+import axios from 'axios';
 
 function App() {
   const [location, setLocation] = useState({ lat: 0, lng: 0 });
@@ -23,19 +24,19 @@ function App() {
   return (
     <>
       <Header setLocation={setLocation} unit={unit} setUnit={setUnit} />
-      <Grid container>
-        <Grid item md={8}>
+      <Grid container spacing={2}>
+        <Grid item lg={8} xs={12}>
           <WeatherCard location={location} unit={unit} setAQIData={setAQIData} setAstroData={setAstroData} setForecastData={setForecastData} />
         </Grid>
-        <Grid item md={4}>
+        <Grid item lg={4} xs={12}>
           <AstroData astroData={astroData} />
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item md={8}>
+      <Grid container spacing={2}>
+        <Grid item lg={8} xs={12}>
           <AQIChart AQIData={AQIData} />
         </Grid>
-        <Grid item md={4}>
+        <Grid item lg={4} xs={12}>
           <Forecast forecastData={forecastData} unit={unit}/>
         </Grid>
       </Grid>

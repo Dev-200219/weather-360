@@ -9,6 +9,8 @@
     padding: 0.5rem;
     height: auto;
     gap: 1rem;
+    margin-top: 0;
+    margin-left: 0;
 }
 
 .forecast-title-container {
@@ -34,7 +36,7 @@
 }
 
 .max-temp,
-.date {
+.forecast-date {
     font-size: xx-large;
     margin-right: 2px;
 }
@@ -48,4 +50,11 @@
 
 .forecast-date-container {
     margin-left: auto;
+}
+
+@media screen and (max-width:1024px) {
+    .forecast-data-container {
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
 }

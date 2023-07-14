@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import './Header.css'
-import { Avatar, List, ListItem } from '@mui/material'
+import { Avatar, List, ListItem, useMediaQuery } from '@mui/material'
 import moment from 'moment/moment'
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
 
-function Header({setLocation, unit, setUnit}) {
+function Header({ setLocation, unit, setUnit }) {
     const [loading, setLoading] = useState(false);
     const [options, setOptions] = useState(null);
+    const isMobile = useMediaQuery('(max-width:900px)')
 
     let date = moment().format('LLLL').split(' ');
     date[date.length - 2] = '';
     date[date.length - 1] = '';
-    date = date.join(' ');
+    let desktopDate = date.join(' ');
+    date[0].substring(0, 3);
+    let mobileDate = date[0] + " " + date[1] + " " + date[2].substring(0, date[2].length - 1);
 
     const debounce = (apiCall, delay) => {
         let timerID;
@@ -40,7 +43,7 @@ function Header({setLocation, unit, setUnit}) {
 
     const chooseLocation = (location) => {
         setOptions(null)
-        setLocation({lat : location.lat, lng : location.lon});
+        setLocation({ lat: location.lat, lng: location.lon });
     }
 
     const optFn = debounce(apiCall, 200);
@@ -54,7 +57,7 @@ function Header({setLocation, unit, setUnit}) {
                 </div>
                 <div className="date-container">
                     <p className='message'>Hi, Dev</p>
-                    <p className='date'>{date}</p>
+                    <p className='date'>{isMobile ? mobileDate : desktopDate}</p>
                 </div>
             </div>
             <div className="right">

@@ -30,6 +30,7 @@ function AQIChart({ AQIData }) {
                 text: 'Chart.js Bar Chart',
             },
         },
+        width : '10%'
     };
 
     const labels = ['Carbon Monoxide', 'Ozone', 'Nitrogen Dioxide', 'Sulphur Dioxide', 'PM2.5', 'PM10'];

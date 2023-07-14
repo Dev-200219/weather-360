@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import './WeatherCard.css'
 import axios from 'axios';
 import moment from 'moment';
+import { useMediaQuery } from '@mui/material';
 
 function WeatherCard({ location, unit, setAQIData, setAstroData, setForecastData }) {
     const [data, setData] = useState({});
+    const isMobile = useMediaQuery('(max-width:900px)')
 
     useEffect(() => {
         axios.get(`https://api.weatherapi.com/v1/forecast.json?key=4184453e9a1449d7a7860028232606&q=${location.lat},${location.lng}&days=3&aqi=yes&alerts=no`).then(({ data }) => {
@@ -19,6 +21,7 @@ function WeatherCard({ location, unit, setAQIData, setAstroData, setForecastData
     let endTime = Math.min(currentTime + 8, 24);
     let startTime = endTime - 10;
     let hourData = data?.forecast?.forecastday[0]?.hour;
+    let loc =`${data?.location?.name}, ${data.location?.region}`;
 
     return (
         <div className='current-day-weather-container'>
@@ -27,7 +30,7 @@ function WeatherCard({ location, unit, setAQIData, setAstroData, setForecastData
                     <img src={data?.current?.condition?.icon} alt="" />
                 </div>
                 <div className="location">
-                    <span className='primary'>{data?.location?.name}, {data.location?.region}</span>
+                    <span className='primary'>{loc}</span>
                     <span className='secondary'>{data?.location?.country}</span>
                 </div>
                 <div className="temperature">

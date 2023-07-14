@@ -30,7 +30,7 @@ function Forecast({ forecastData, unit }) {
                         <span className='min-temp'>/{unit === 'celsius' ? forecastData[0]?.day?.mintemp_c : forecastData[0]?.day?.mintemp_f}&deg;</span>
                     </div>
                     <div className="forecast-date-container">
-                        <span className="date">{day1}</span>
+                        <span className="forecast-date">{day1}</span>
                         <span className="month">{month1}, </span>
                         <span className="day">{nextDay}</span>
                     </div>
@@ -44,7 +44,7 @@ function Forecast({ forecastData, unit }) {
                         <span className='min-temp'>/{unit === 'celsius' ? forecastData[1]?.day?.mintemp_c : forecastData[1]?.day?.mintemp_f}&deg;</span>
                     </div>
                     <div className="forecast-date-container">
-                        <span className="date">{day2}</span>
+                        <span className="forecast-date">{day2}</span>
                         <span className="month">{month2}, </span>
                         <span className="day">{nextNextDay}</span>
                     </div>
